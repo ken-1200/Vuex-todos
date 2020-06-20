@@ -21,5 +21,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 </style>

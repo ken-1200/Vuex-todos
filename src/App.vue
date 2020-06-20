@@ -13,9 +13,13 @@
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  methods: {
+    goList() {
+      this.$router.push('/', () => {});
+    }
+  },
+  created() {
+    this.$store.dispatch('todoCreate');
   }
 }
 </script>

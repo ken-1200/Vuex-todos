@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <h1 @click="goList()">My Todos App</h1>
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 

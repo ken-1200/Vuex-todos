@@ -1,7 +1,6 @@
 # vuejs_todos
 
 ## Vuex-todos
-```
 Vue.js : Todoアプリ作成
  - Notion的な
    - 目標の登録
@@ -21,4 +20,3 @@ Vue.js : Todoアプリ作成
    - vue: 2.6.11
    - vuex: 3.4.0 
    - vue-router: 3.3.4
-```

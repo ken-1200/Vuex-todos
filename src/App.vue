@@ -23,16 +23,19 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-
+header {
   h1 {
-    text-decoration: underline;
+    border-bottom: solid 3px $cVueGreen;
+    cursor: pointer;
+  }
+}
+
+main {
+  margin-left: 10px;
+  
+  h2 {
+    color: $cSubBlack;
+    border-bottom: solid 3px $cVueGreen;
   }
 }
 </style>

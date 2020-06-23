@@ -53,6 +53,9 @@ export default new Vuex.Store({
       let sequence = 3;
       commit('setTodos', defaultTodos);
       commit('setSequence', sequence);
-    }
+    },
+    createTodos({ commit }, todo) {
+      commit('createTodo', todo);
+    },
   }
 });

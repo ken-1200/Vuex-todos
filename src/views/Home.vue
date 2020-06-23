@@ -4,9 +4,10 @@
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
         <p class="todo-list__title">{{ todo.title }}</p>
+        <button class="todo-list__edit" @click="edit()">編集</button>
       </li>
     </ul>
-    <router-link to="/add">＋</router-link>
+    <button class="todo-list__adder" @click="add()">＋</button>
   </div>
 </template>
 
@@ -16,14 +17,50 @@ export default {
     todos() {
       return this.$store.state.todoData
     }
+  },
+  methods: {
+    add() {
+      this.$router.push('/add');
+    },
+    edit() {
+      this.$router.push('/edit/1');
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .todo-list {
   list-style: none;
-  margin: 0;
+  margin: 0 20px;
   padding: 0;
+
+  &__edit {
+    outline: none;
+    cursor: pointer;
+    padding: 0px 10px;
+    margin: 0px auto;
+    font-weight: bold;
+    border: 1px solid $cSubBlack;
+    color: $cTextWhite;
+    background-color: $cMainBlack;
+  }
+
+  &__adder {
+    position: fixed;
+    outline: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    right: 70px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid $cSubBlack;
+    color: $cTextWhite;
+    background-color: $cMainBlack;
+  }
 }
 </style>

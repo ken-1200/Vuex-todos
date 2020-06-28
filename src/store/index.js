@@ -35,6 +35,15 @@ export default new Vuex.Store({
       };
       state.todoData.push(todo);
       state.sequence++;
+    },
+    updateTodo(state, { id, title, content }) {
+      const index = state.todoData.findIndex(todo => todo.id === id)
+      console.log(index);
+      if(index >= 0) {
+        state.todoData[index].id = id;    
+        state.todoData[index].title = title;
+        state.todoData[index].content = content;
+      }
     }
   },
   actions: {//mutationsをコミットする

@@ -36,11 +36,11 @@ export default {
     }
   },
   methods: {
-    emitTitle(e) {
-      this.$emit('todo-title', e.target.value)
+    sendTitle(e) {
+      this.$emit('update:title', e.target.value);
     },
-    emitContent(e) {
-      this.$emit('todo-content', e.target.value)
+    sendContent(e) {
+      this.$emit('update:content', e.target.value)
     }
   }
 }

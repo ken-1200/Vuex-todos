@@ -22,10 +22,23 @@
 
 <script>
 export default {
-  data() {
-    return {
-      str: 'ken'
-    }
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    content: {
+      type: String,
+      required: true
+    },
+    // id: {
+    //   type: Number,
+    //   default: null
+    // },
+    // done: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
   computed: {
     readTitle() {

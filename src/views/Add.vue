@@ -28,11 +28,8 @@ export default {
       console.log(this.content);
     },
     adder() {
-      let todo = {
-        title: this.title,
-        content: this.content
-      }
-      this.$store.dispatch('createTodos', todo);//ここにtitle, contentをまとめて送る
+      console.log(this.todo);//add内のdataを変更して表示している。
+      this.$store.dispatch('createTodos', this.todo);//ここにtitle, contentをまとめて送る
       this.$router.push('/');//Home.vueに遷移する
       console.log(this.$store.state.todoData);
     }

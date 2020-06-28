@@ -69,5 +69,8 @@ export default new Vuex.Store({
     createTodos({ commit }, todo) {
       commit('createTodo', todo);
     },
+    updateTodos({ commit }, todo) {
+      commit('updateTodo', todo);
+    }
   }
 });

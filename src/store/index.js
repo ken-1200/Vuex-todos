@@ -23,6 +23,16 @@ export default new Vuex.Store({
     setSequence(state, sequence) {//sequence追加
       state.sequence = sequence;
     },
+    createTodo(state, { title, content }) {
+      const todo = {
+        id: state.sequence,
+        title: title,
+        content: content,
+        done: false
+      };
+      state.todoData.push(todo);
+      state.sequence++;
+    }
   },
   actions: {//mutationsをコミットする
     todoCreate({ commit }) {
@@ -43,6 +53,9 @@ export default new Vuex.Store({
       let sequence = 3;
       commit('setTodos', defaultTodos);
       commit('setSequence', sequence);
-    }
+    },
+    createTodos({ commit }, todo) {
+      commit('createTodo', todo);
+    },
   }
 });

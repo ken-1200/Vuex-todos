@@ -4,7 +4,7 @@
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
         <p class="todo-list__title">{{ todo.title }}</p>
-        <button class="todo-list__edit" @click="edit()">編集</button>
+        <button class="todo-list__edit" @click="edit(todo.id)">編集</button>
       </li>
     </ul>
     <button class="todo-list__adder" @click="add()">＋</button>
@@ -22,8 +22,8 @@ export default {
     add() {
       this.$router.push('/add');
     },
-    edit() {
-      this.$router.push('/edit/1');
+    edit(id) {
+      this.$router.push(`/edit/${id}`);
     }
   }
 }

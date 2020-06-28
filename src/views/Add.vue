@@ -19,14 +19,6 @@ export default {
     }
   },
   methods: {
-    setTitleInfo(value) {
-      this.title = value;
-      console.log(this.title);
-    },
-    setContentInfo(value) {
-      this.content = value;
-      console.log(this.content);
-    },
     adder() {
       console.log(this.todo);//add内のdataを変更して表示している。
       this.$store.dispatch('createTodos', this.todo);//ここにtitle, contentをまとめて送る

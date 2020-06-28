@@ -1,7 +1,7 @@
 <template>
   <div class="form-container">
     <h2>Add Todo</h2>
-    <Form @todo-title="setTitleInfo" @todo-content="setContentInfo"></Form>
+    <Form v-bind.sync="todo"></Form>
     <button @click="adder" class="form-container__btn">追加</button>
   </div>
 </template>
@@ -12,8 +12,10 @@ import Form from '../components/Form.vue'
 export default {
   data() {
     return {
-      title: '',
-      content: ''
+      todo: {
+        title: '',
+        content: ''
+      }
     }
   },
   methods: {

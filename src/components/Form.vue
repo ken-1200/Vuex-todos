@@ -5,7 +5,8 @@
     <input 
       type="text"
       id="title"
-      @change="emitTitle"
+      :value="readTitle"
+      @change="sendTitle"    
     >
     <!-- <p>{{ title }}</p> -->
     <br><br>
@@ -13,7 +14,8 @@
     <br>
     <textarea 
       id="content"
-      @change="emitContent"
+      :value="readContent"
+      @change="sendContent"
     ></textarea>
   </div>
 </template>
@@ -26,9 +28,12 @@ export default {
     }
   },
   computed: {
-    // title() {
-    //   return this.$store.state.todoData;
-    // }
+    readTitle() {
+      return this.title
+    },
+    readContent() {
+      return this.content
+    }
   },
   methods: {
     emitTitle(e) {

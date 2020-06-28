@@ -15,6 +15,9 @@ export default new Vuex.Store({
     // タスクが完了したリスト数
     // タスクが完了していないリスト数
     // idに該当するタスクの取得
+    getTodoById: state => id => {
+      return state.todoData.find(todo => todo.id === id)
+    },
   },
   mutations: {//stateの値を更新..actionをする為の処理内容
     setTodos(state, defaultTodos) {//todoData追加

@@ -8,7 +8,6 @@
       :value="readTitle"
       @change="sendTitle"    
     >
-    <!-- <p>{{ title }}</p> -->
     <br><br>
     <label for="content">Content</label>
     <br>

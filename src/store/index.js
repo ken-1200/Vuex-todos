@@ -31,7 +31,7 @@ export default new Vuex.Store({
     setSequence(state, sequence) {//sequence追加
       state.sequence = sequence;
     },
-    createTodo(state, { title, content }) {
+    createTodo(state, { title, content }) {//Todoの作成
       const todo = {
         id: state.sequence,
         title: title,
@@ -41,7 +41,7 @@ export default new Vuex.Store({
       state.todoData.push(todo);
       state.sequence++;
     },
-    updateTodo(state, { id, title, content }) {
+    updateTodo(state, { id, title, content }) {//Todoの更新
       const index = state.todoData.findIndex(todo => todo.id === id)
       if(index >= 0) {
         state.todoData[index].id = id;    

@@ -37,6 +37,9 @@ export default {
     },
     edit(id) {
       this.$router.push(`/edit/${id}`);
+    },
+    del(id) {
+      this.$store.dispatch('deleteTodos', id)
     }
   }
 }

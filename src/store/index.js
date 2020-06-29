@@ -9,7 +9,8 @@ export default new Vuex.Store({
     sequence: 1
   },
   getters: {//computedに描いてもいいけど、gettersの方がわかりやすいみたい..
-    // タスクが完了したリスト
+    // タスクが完了したリスト...filter(trueのものしか返しません)
+    doneTodos: state => state.todoData.filter(todo => todo.done),
     // タスクが完了していないリスト
     // 全体のタスク数
     // タスクが完了したリスト数

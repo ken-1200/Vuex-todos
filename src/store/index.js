@@ -48,6 +48,12 @@ export default new Vuex.Store({
         state.todoData[index].title = title;
         state.todoData[index].content = content;
       }
+    },
+    deleteTodo(state, id) {//Todoの削除
+      const index = state.todoData.findIndex(todo => todo.id === id);
+      if(index >= 0) {
+        state.todoData.splice(index, 1);
+      }
     }
   },
   actions: {//mutationsをコミットする

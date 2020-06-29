@@ -15,6 +15,9 @@ export default new Vuex.Store({
     // タスクが完了したリスト数
     // タスクが完了していないリスト数
     // idに該当するタスクの取得
+    getTodoById: state => id => {
+      return state.todoData.find(todo => todo.id === id)
+    },
   },
   mutations: {//stateの値を更新..actionをする為の処理内容
     setTodos(state, defaultTodos) {//todoData追加
@@ -32,6 +35,15 @@ export default new Vuex.Store({
       };
       state.todoData.push(todo);
       state.sequence++;
+    },
+    updateTodo(state, { id, title, content }) {
+      const index = state.todoData.findIndex(todo => todo.id === id)
+      console.log(index);
+      if(index >= 0) {
+        state.todoData[index].id = id;    
+        state.todoData[index].title = title;
+        state.todoData[index].content = content;
+      }
     }
   },
   actions: {//mutationsをコミットする
@@ -57,5 +69,8 @@ export default new Vuex.Store({
     createTodos({ commit }, todo) {
       commit('createTodo', todo);
     },
+    updateTodos({ commit }, todo) {
+      commit('updateTodo', todo);
+    }
   }
 });

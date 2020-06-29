@@ -5,37 +5,54 @@
     <input 
       type="text"
       id="title"
-      @change="emitTitle"
+      :value="readTitle"
+      @change="sendTitle"    
     >
-    <!-- <p>{{ title }}</p> -->
     <br><br>
     <label for="content">Content</label>
     <br>
     <textarea 
       id="content"
-      @change="emitContent"
+      :value="readContent"
+      @change="sendContent"
     ></textarea>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      str: 'ken'
-    }
-  },
-  computed: {
-    // title() {
-    //   return this.$store.state.todoData;
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    content: {
+      type: String,
+      required: true
+    },
+    // id: {
+    //   type: Number,
+    //   default: null
+    // },
+    // done: {
+    //   type: Boolean,
+    //   default: false
     // }
   },
-  methods: {
-    emitTitle(e) {
-      this.$emit('todo-title', e.target.value)
+  computed: {
+    readTitle() {
+      return this.title
     },
-    emitContent(e) {
-      this.$emit('todo-content', e.target.value)
+    readContent() {
+      return this.content
+    }
+  },
+  methods: {
+    sendTitle(e) {
+      this.$emit('update:title', e.target.value);
+    },
+    sendContent(e) {
+      this.$emit('update:content', e.target.value)
     }
   }
 }

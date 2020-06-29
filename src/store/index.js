@@ -12,6 +12,7 @@ export default new Vuex.Store({
     // タスクが完了したリスト...filter(trueのものしか返しません)
     doneTodos: state => state.todoData.filter(todo => todo.done),
     // タスクが完了していないリスト
+    notDoneTodos: state => state.todoData.filter(todo => todo.done != true),
     // 全体のタスク数
     // タスクが完了したリスト数
     // タスクが完了していないリスト数

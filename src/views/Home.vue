@@ -30,6 +30,29 @@ export default {
 </script>
 
 <style lang="scss">
+.todo-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0 20px;
+  padding: 0;
+
+  &__items {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(150px, 85px);
+    z-index: 1000;
+    background-color: white;
+
+    & p {
+      margin: auto 10px;
+    }
+  }
+}
+
 .todo-list {
   list-style: none;
   margin: 0 20px;

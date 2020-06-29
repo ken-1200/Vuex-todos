@@ -43,7 +43,6 @@ export default new Vuex.Store({
     },
     updateTodo(state, { id, title, content }) {
       const index = state.todoData.findIndex(todo => todo.id === id)
-      console.log(index);
       if(index >= 0) {
         state.todoData[index].id = id;    
         state.todoData[index].title = title;

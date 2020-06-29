@@ -52,7 +52,8 @@ export default {
     cursor: pointer;
     width: 50px;
     height: 50px;
-    right: 70px;
+    right: 140px;
+    bottom: 360px;
     margin: 0 auto;
     padding: 0;
     border-radius: 50%;

@@ -1,6 +1,13 @@
 <template>
   <div>
     <h2>Todo List</h2>
+    <ul class="todo-header">
+      <li class="todo-header__items">
+        <p>全て({{ allTodosCount }})</p>
+        <p>完了({{ doneTodosCount }})</p>
+        <p>未完了({{ notDoneTodosCount }})</p>
+      </li>
+    </ul>
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
         <p class="todo-list__title">{{ todo.title }}</p>
@@ -12,8 +19,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   computed: {
+    ...mapGetters(['doneTodos', 'notDoneTodos', 'allTodosCount', 'doneTodosCount', 'notDoneTodosCount']),
     todos() {
       return this.$store.state.todoData
     }

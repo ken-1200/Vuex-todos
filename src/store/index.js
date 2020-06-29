@@ -9,11 +9,16 @@ export default new Vuex.Store({
     sequence: 1
   },
   getters: {//computedに描いてもいいけど、gettersの方がわかりやすいみたい..
-    // タスクが完了したリスト
+    // タスクが完了したリスト...filter(trueのものしか返しません)
+    doneTodos: state => state.todoData.filter(todo => todo.done),
     // タスクが完了していないリスト
+    notDoneTodos: state => state.todoData.filter(todo => todo.done != true),
     // 全体のタスク数
-    // タスクが完了したリスト数
+    allTodosCount: state => state.todoData.length,
+    // タスクが完了したリスト数...(state, 他のgetters)
+    doneTodosCount: (state, getters) => getters.doneTodos.length,
     // タスクが完了していないリスト数
+    notDoneTodosCount: (state, getters) => getters.notDoneTodos.length,
     // idに該当するタスクの取得
     getTodoById: state => id => {
       return state.todoData.find(todo => todo.id === id)
@@ -38,7 +43,6 @@ export default new Vuex.Store({
     },
     updateTodo(state, { id, title, content }) {
       const index = state.todoData.findIndex(todo => todo.id === id)
-      console.log(index);
       if(index >= 0) {
         state.todoData[index].id = id;    
         state.todoData[index].title = title;

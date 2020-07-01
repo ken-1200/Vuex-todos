@@ -11,7 +11,7 @@
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items" @click="changeDone(todo.id)">
         <div :class="['todo-list__checkbox', { click: todo.done }]"/>
-          <p :class="['todo-list__text', { click: todo.done}]">{{ todo.title }}</p>
+          <p :class="['todo-list__text', { click: todo.done }]">{{ todo.title }}</p>
           <button class="todo-list__edit" @click.stop="edit(todo.id)">編集</button>
           <button class="todo-list__delete" @click.stop="del(todo.id)">削除</button>
       </li>
@@ -63,7 +63,7 @@ export default {
     left: 0;
     transform: translate(150px, 85px);
     z-index: 1000;
-    background-color: white;
+    background-color: $cTextWhite;
 
     & p {
       margin: auto 10px;
@@ -78,14 +78,14 @@ export default {
 
   &__items {
     padding: 5px 10px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid $cWhite;
     transition: background-color 0.75s;
 
     &:hover {
-      background-color: #f6f6f6;
+      background-color: $cGray;
     }
     &:nth-last-child(1) {
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid $cWhite;
     }
   }
 
@@ -95,7 +95,7 @@ export default {
     margin: auto 10px;
     width: 15px;
     height: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid $cWhite;
     border-radius: 50%;
     display: inline-block;
     transition: all 0.75s;

@@ -76,6 +76,58 @@ export default {
   margin: 0 20px;
   padding: 0;
 
+  &__items {
+    padding: 5px 10px;
+    border-top: 1px solid #ddd;
+    transition: background-color 0.75s;
+
+    &:hover {
+      background-color: #f6f6f6;
+    }
+    &:nth-last-child(1) {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  &__checkbox {
+    cursor: pointer;
+    position: relative;
+    margin: auto 10px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.75s;
+
+    &::before {
+      content: "✔︎";
+      position: absolute;
+      top: -5px;
+      left: 3px;
+      color: transparent;
+      transition: all 0.75s;
+    }
+
+    &.click {
+      background-color: $cVueGreen;
+      &::before {
+        color: $cSubBlack;
+      }
+    }
+  }
+
+  &__text {
+    cursor: pointer;
+    display: inline-block;
+    margin: 1em 0;
+
+    &.click {
+      text-decoration: line-through;
+      transition: all 0.75s;
+    }
+  }
+
   &__edit {
     border-radius: 10px;
     outline: none;
@@ -86,6 +138,11 @@ export default {
     border: 1px solid $cSubBlack;
     color: $cTextWhite;
     background-color: $cMainBlack;
+    transition: all 0.75s;
+    
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__delete {
@@ -95,9 +152,14 @@ export default {
     padding: 0px 10px;
     margin: 0px auto;
     font-weight: bold;
-    border: 1px solid #535353;
-    color: #fff;
-    background-color: #2c3e50;
+    border: 1px solid $cSubBlack;
+    color: $cTextWhite;
+    background-color: $cMainBlack;
+    transition: all 0.75s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__adder {
@@ -116,6 +178,11 @@ export default {
     border: 1px solid $cSubBlack;
     color: $cTextWhite;
     background-color: $cMainBlack;
+    transition: all 0.75s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 </style>

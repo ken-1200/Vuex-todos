@@ -24,17 +24,14 @@ export default {
     editer() {
       this.$store.dispatch('updateTodos', this.todo);
       this.$router.push('/');
-      console.log(this.todo);
-      console.log(this.$store.state.todoData);
     }
   },
   created() {
+    //公式を参照....関数を返り値にすることで、ゲッターに引数を渡すこともできます。これは特にストアの中の配列を検索する時に役立ちます
     //data内のtodoオブジェクトをクリエイトされるタイミングで、gettersの値を代入
     //代入された値をv-bind.sync="todo"で双方向データバインディングする
     //form.vueのpropsに送る
     this.todo = this.$store.getters.getTodoById(Number(this.$route.params.id));
-    console.log(this.$route.params.id);
-    //公式を参照....関数を返り値にすることで、ゲッターに引数を渡すこともできます。これは特にストアの中の配列を検索する時に役立ちます
   },
   components: {
     Form

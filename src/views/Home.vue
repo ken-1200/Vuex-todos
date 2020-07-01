@@ -10,8 +10,8 @@
     </ul>
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items" @click="changeDone(todo.id)">
-        <div :class="['todo-list__checkbox', { 'click': todo.done }]"/>
-          <p :class="['todo-list__text', { 'click': todo.done}]">{{ todo.title }}</p>
+        <div :class="['todo-list__checkbox', { click: todo.done }]"/>
+          <p :class="['todo-list__text', { click: todo.done}]">{{ todo.title }}</p>
           <button class="todo-list__edit" @click.stop="edit(todo.id)">編集</button>
           <button class="todo-list__delete" @click.stop="del(todo.id)">削除</button>
       </li>

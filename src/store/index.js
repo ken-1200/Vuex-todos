@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import getters from './getters'
+import mutations from './mutations'
+import actions from './actions'
 
 Vue.use(Vuex);
 
@@ -8,91 +11,7 @@ export default new Vuex.Store({
     todoData: [],
     sequence: 1
   },
-  getters: {//computedに描いてもいいけど、gettersの方がわかりやすいみたい..
-    // タスクが完了したリスト...filter(trueのものしか返しません)
-    doneTodos: state => state.todoData.filter(todo => todo.done),
-    // タスクが完了していないリスト
-    notDoneTodos: state => state.todoData.filter(todo => todo.done != true),
-    // 全体のタスク数
-    allTodosCount: state => state.todoData.length,
-    // タスクが完了したリスト数...(state, 他のgetters)
-    doneTodosCount: (state, getters) => getters.doneTodos.length,
-    // タスクが完了していないリスト数
-    notDoneTodosCount: (state, getters) => getters.notDoneTodos.length,
-    // idに該当するタスクの取得
-    getTodoById: state => id => {
-      return state.todoData.find(todo => todo.id === id)
-    },
-  },
-  mutations: {//stateの値を更新..actionをする為の処理内容
-    setTodos(state, defaultTodos) {//todoData追加
-      state.todoData = defaultTodos;
-    },
-    setSequence(state, sequence) {//sequence追加
-      state.sequence = sequence;
-    },
-    createTodo(state, { title, content }) {//Todoの作成
-      const todo = {
-        id: state.sequence,
-        title: title,
-        content: content,
-        done: false
-      };
-      state.todoData.push(todo);
-      state.sequence++;
-    },
-    updateTodo(state, { id, title, content }) {//Todoの更新
-      const index = state.todoData.findIndex(todo => todo.id === id)
-      if(index >= 0) {
-        state.todoData[index].id = id;    
-        state.todoData[index].title = title;
-        state.todoData[index].content = content;
-      }
-    },
-    deleteTodo(state, id) {//Todoの削除
-      const index = state.todoData.findIndex(todo => todo.id === id);
-      if(index >= 0) {
-        state.todoData.splice(index, 1);
-      }
-    },
-    changeDone(state, id) {//Doneチェンジ
-      const index = state.todoData.findIndex(todo => todo.id === id);
-      if(index >= 0) {
-        state.todoData[index].done ? state.todoData[index].done = false : state.todoData[index].done =true;
-      }
-    }
-  },
-  actions: {//mutationsをコミットする
-    todoCreate({ commit }) {
-      let defaultTodos = [
-        {
-          id: 1,
-          title: '胸トレをする',
-          content: '大胸筋上部',
-          done: false
-        },
-        {
-          id: 2,
-          title: '背中トレをする',
-          content: '広背筋下部',
-          done: true
-        }
-      ];
-      let sequence = 3;
-      commit('setTodos', defaultTodos);
-      commit('setSequence', sequence);
-    },
-    createTodos({ commit }, todo) {
-      commit('createTodo', todo);
-    },
-    updateTodos({ commit }, todo) {
-      commit('updateTodo', todo);
-    },
-    deleteTodos({ commit }, id) {
-      commit('deleteTodo', id);
-    },
-    changeDoneTodos({ commit }, id) {
-      commit('changeDone', id);
-    }
-  }
+  getters,
+  mutations,
+  actions,
 });

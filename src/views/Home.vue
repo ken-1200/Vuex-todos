@@ -9,12 +9,11 @@
       </li>
     </ul>
     <ul class="todo-list">
-      <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
-        <p class="todo-list__title">
-          {{ todo.title }}
-          <button class="todo-list__edit" @click="edit(todo.id)">編集</button>
-          <button class="todo-list__delete" @click="del(todo.id)">削除</button>
-        </p>
+      <li v-for="todo in todos" :key="todo.id" class="todo-list__items" @click="changeDone(todo.id)">
+        <div :class="['todo-list__checkbox', { 'click': todo.done }]"/>
+          <p :class="['todo-list__text', { 'click': todo.done}]">{{ todo.title }}</p>
+          <button class="todo-list__edit" @click.stop="edit(todo.id)">編集</button>
+          <button class="todo-list__delete" @click.stop="del(todo.id)">削除</button>
       </li>
     </ul>
     <button class="todo-list__adder" @click="add()">＋</button>
@@ -40,6 +39,9 @@ export default {
     },
     del(id) {
       this.$store.dispatch('deleteTodos', id)
+    },
+    changeDone(id) {
+      this.$store.dispatch('changeDoneTodos', id)
     }
   }
 }

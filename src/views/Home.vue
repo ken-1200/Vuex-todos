@@ -9,12 +9,11 @@
       </li>
     </ul>
     <ul class="todo-list">
-      <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
-        <p class="todo-list__title">
-          {{ todo.title }}
-          <button class="todo-list__edit" @click="edit(todo.id)">編集</button>
-          <button class="todo-list__delete" @click="del(todo.id)">削除</button>
-        </p>
+      <li v-for="todo in todos" :key="todo.id" class="todo-list__items" @click="changeDone(todo.id)">
+        <div :class="['todo-list__checkbox', { click: todo.done }]"/>
+          <p :class="['todo-list__text', { click: todo.done}]">{{ todo.title }}</p>
+          <button class="todo-list__edit" @click.stop="edit(todo.id)">編集</button>
+          <button class="todo-list__delete" @click.stop="del(todo.id)">削除</button>
       </li>
     </ul>
     <button class="todo-list__adder" @click="add()">＋</button>
@@ -40,6 +39,9 @@ export default {
     },
     del(id) {
       this.$store.dispatch('deleteTodos', id)
+    },
+    changeDone(id) {
+      this.$store.dispatch('changeDoneTodos', id)
     }
   }
 }
@@ -74,6 +76,58 @@ export default {
   margin: 0 20px;
   padding: 0;
 
+  &__items {
+    padding: 5px 10px;
+    border-top: 1px solid #ddd;
+    transition: background-color 0.75s;
+
+    &:hover {
+      background-color: #f6f6f6;
+    }
+    &:nth-last-child(1) {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  &__checkbox {
+    cursor: pointer;
+    position: relative;
+    margin: auto 10px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.75s;
+
+    &::before {
+      content: "✔︎";
+      position: absolute;
+      top: -5px;
+      left: 3px;
+      color: transparent;
+      transition: all 0.75s;
+    }
+
+    &.click {
+      background-color: $cVueGreen;
+      &::before {
+        color: $cSubBlack;
+      }
+    }
+  }
+
+  &__text {
+    cursor: pointer;
+    display: inline-block;
+    margin: 1em 0;
+
+    &.click {
+      text-decoration: line-through;
+      transition: all 0.75s;
+    }
+  }
+
   &__edit {
     border-radius: 10px;
     outline: none;
@@ -84,6 +138,11 @@ export default {
     border: 1px solid $cSubBlack;
     color: $cTextWhite;
     background-color: $cMainBlack;
+    transition: all 0.75s;
+    
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__delete {
@@ -93,9 +152,14 @@ export default {
     padding: 0px 10px;
     margin: 0px auto;
     font-weight: bold;
-    border: 1px solid #535353;
-    color: #fff;
-    background-color: #2c3e50;
+    border: 1px solid $cSubBlack;
+    color: $cTextWhite;
+    background-color: $cMainBlack;
+    transition: all 0.75s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__adder {
@@ -114,6 +178,11 @@ export default {
     border: 1px solid $cSubBlack;
     color: $cTextWhite;
     background-color: $cMainBlack;
+    transition: all 0.75s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 </style>

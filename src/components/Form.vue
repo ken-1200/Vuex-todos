@@ -30,14 +30,6 @@ export default {
       type: String,
       required: true
     },
-    // id: {
-    //   type: Number,
-    //   default: null
-    // },
-    // done: {
-    //   type: Boolean,
-    //   default: false
-    // }
   },
   computed: {
     readTitle() {

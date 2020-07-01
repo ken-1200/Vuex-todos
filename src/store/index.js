@@ -54,6 +54,12 @@ export default new Vuex.Store({
       if(index >= 0) {
         state.todoData.splice(index, 1);
       }
+    },
+    changeDone(state, id) {//Doneチェンジ
+      const index = state.todoData.findIndex(todo => todo.id === id);
+      if(index >= 0) {
+        state.todoData[index].done ? state.todoData[index].done = false : state.todoData[index].done =true;
+      }
     }
   },
   actions: {//mutationsをコミットする
@@ -84,6 +90,9 @@ export default new Vuex.Store({
     },
     deleteTodos({ commit }, id) {
       commit('deleteTodo', id);
+    },
+    changeDoneTodos({ commit }, id) {
+      commit('changeDone', id);
     }
   }
 });

@@ -10,8 +10,11 @@
     </ul>
     <ul class="todo-list">
       <li v-for="todo in todos" :key="todo.id" class="todo-list__items">
-        <p class="todo-list__title">{{ todo.title }}</p>
-        <button class="todo-list__edit" @click="edit(todo.id)">編集</button>
+        <p class="todo-list__title">
+          {{ todo.title }}
+          <button class="todo-list__edit" @click="edit(todo.id)">編集</button>
+          <button class="todo-list__delete" @click="del(todo.id)">削除</button>
+        </p>
       </li>
     </ul>
     <button class="todo-list__adder" @click="add()">＋</button>
@@ -34,6 +37,9 @@ export default {
     },
     edit(id) {
       this.$router.push(`/edit/${id}`);
+    },
+    del(id) {
+      this.$store.dispatch('deleteTodos', id)
     }
   }
 }
@@ -69,14 +75,27 @@ export default {
   padding: 0;
 
   &__edit {
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    padding: 0px 10px;
+    margin: 0px 20px;
+    font-weight: bold;
+    border: 1px solid $cSubBlack;
+    color: $cTextWhite;
+    background-color: $cMainBlack;
+  }
+
+  &__delete {
+    border-radius: 10px;
     outline: none;
     cursor: pointer;
     padding: 0px 10px;
     margin: 0px auto;
     font-weight: bold;
-    border: 1px solid $cSubBlack;
-    color: $cTextWhite;
-    background-color: $cMainBlack;
+    border: 1px solid #535353;
+    color: #fff;
+    background-color: #2c3e50;
   }
 
   &__adder {

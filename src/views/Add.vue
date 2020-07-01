@@ -20,10 +20,8 @@ export default {
   },
   methods: {
     adder() {
-      console.log(this.todo);//add内のdataを変更して表示している。
       this.$store.dispatch('createTodos', this.todo);//ここにtitle, contentをまとめて送る
       this.$router.push('/');//Home.vueに遷移する
-      console.log(this.$store.state.todoData);
     }
   },
   components: {

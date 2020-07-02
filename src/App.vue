@@ -28,7 +28,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: $cTextWhite;
   z-index: 1100;
 
   h1 {
@@ -51,7 +51,7 @@ main {
     border-bottom: solid 3px $cVueGreen;
     margin: 0;
     padding: 20px 0 0;
-    background-color: white;
+    background-color: $cTextWhite;
     z-index: 1000;
   }
 }
